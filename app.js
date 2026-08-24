@@ -9,6 +9,10 @@
 
   const $ = (selector, scope = document) => scope.querySelector(selector);
   const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
+  const main = $("main");
+  const hero = $("#home");
+  const plan = $("#plan-content");
+  if (main && hero && plan) main.insertBefore(plan, hero.nextElementSibling);
   const arabicNumber = new Intl.NumberFormat("ar-SA");
   const formatNumber = (value) => arabicNumber.format(value);
   const escapeHtml = (value = "") =>
@@ -33,7 +37,7 @@
   const slideSearch = new Map(
     data.slides.map((slide) => [
       slide.number,
-      normalize(`${slide.title} ${slide.section} ${slide.searchText}`),
+      normalize(`${slide.title} ${slide.contextTitle || ""} ${slide.section} ${slide.searchText}`),
     ]),
   );
 
@@ -56,7 +60,7 @@
       const link = document.getElementById(id);
       if (link) link.href = href;
     });
-    $("#heroVision").textContent = data.meta.vision;
+    $("#heroVision").textContent = "خطة مدرسية تفاعلية للبحث والتصفح المباشر.";
     $("#heroSlideCount").textContent = formatNumber(data.stats.slides);
   }
 
@@ -76,7 +80,7 @@
 
   function renderStats() {
     const stats = [
-      [data.stats.slides, "شريحة ومحتوى", "#dff2f1"],
+      [data.stats.slides, "قسماً منظماً", "#dff2f1"],
       [data.stats.programs, "برنامجاً تنفيذياً", "#f8edcf"],
       [data.stats.tables, "جدولاً منظماً", "#e3edf8"],
       [data.stats.cells, "خلية بيانات", "#e8f5e2"],
@@ -139,26 +143,42 @@
   }
 
   function tableHtml(table) {
+    const columnLabels = Array.from({ length: table.columns }, (_, index) => `العمود ${formatNumber(index + 1)}`);
+    table.data.slice(0, 2).forEach((row) => {
+      row.forEach((cell) => {
+        const label = cell.text.replaceAll("\n", " ").trim();
+        if (!label) return;
+        for (let offset = 0; offset < cell.colSpan; offset += 1) {
+          const column = cell.column + offset;
+          if (column < columnLabels.length && columnLabels[column].startsWith("العمود")) {
+            columnLabels[column] = label;
+          }
+        }
+      });
+    });
     const rows = table.data
       .map((row, rowIndex) => {
         const cells = row
           .map((cell) => {
             const tag = cell.header ? "th" : "td";
             const span = `${cell.rowSpan > 1 ? ` rowspan="${cell.rowSpan}"` : ""}${cell.colSpan > 1 ? ` colspan="${cell.colSpan}"` : ""}`;
-            return `<${tag}${span}>${escapeHtml(cell.text).replaceAll("\n", "<br>")}</${tag}>`;
+            const label = columnLabels[cell.column] || `العمود ${formatNumber(cell.column + 1)}`;
+            const cellClass = cell.colSpan > 1 ? ' class="wide-cell"' : "";
+            return `<${tag}${span}${cellClass} data-label="${escapeHtml(label)}">${escapeHtml(cell.text).replaceAll("\n", "<br>")}</${tag}>`;
           })
           .join("");
         return `<tr data-row="${rowIndex + 1}">${cells}</tr>`;
       })
       .join("");
+    const densityClass = table.columns > 14 ? "table-wide table-ultra" : table.columns > 6 ? "table-wide" : "";
     return `
       <article class="table-card">
         <div class="table-caption">
           <span>الجدول ${formatNumber(table.number)}</span>
           <span>${formatNumber(table.rows)} صف × ${formatNumber(table.columns)} عمود · ${formatNumber(table.cellCount)} خلية</span>
         </div>
-        <div class="table-scroll" tabindex="0" aria-label="جدول قابل للتمرير">
-          <table class="data-table" style="--columns:${table.columns}"><tbody>${rows}</tbody></table>
+        <div class="table-scroll" aria-label="جدول كامل دون تمرير أفقي">
+          <table class="data-table ${densityClass}" style="--columns:${table.columns}"><tbody>${rows}</tbody></table>
         </div>
       </article>`;
   }
@@ -172,6 +192,9 @@
   }
 
   function slideHtml(slide) {
+    const context = [slide.contextTitle, slide.section]
+      .filter((value, index, values) => value && values.indexOf(value) === index)
+      .join(" · ");
     const textBlocks = slide.texts.length
       ? `<div class="text-blocks">${slide.texts
           .map((block) => `<p class="text-block">${escapeHtml(block.text)}</p>`)
@@ -195,7 +218,7 @@
       <details class="slide-card" id="slide-${slide.number}" data-slide="${slide.number}" data-section="${escapeHtml(slide.section)}">
         <summary>
           <span class="slide-number">${String(slide.number).padStart(2, "0")}</span>
-          <span class="slide-title"><strong>${escapeHtml(slide.title)}</strong><span>${escapeHtml(slide.section)}</span></span>
+          <span class="slide-title"><strong>${escapeHtml(slide.title)}</strong><span>${escapeHtml(context)}</span></span>
           <span class="summary-meta">${tableBadge}${pictureBadge}<i aria-hidden="true">⌄</i></span>
         </summary>
         <div class="slide-body">
@@ -263,7 +286,7 @@
       if (visible) visibleCount += 1;
     });
 
-    $("#resultsCount").textContent = `${formatNumber(visibleCount)} شريحة`;
+    $("#resultsCount").textContent = `${formatNumber(visibleCount)} قسماً`;
     $("#indexCount").textContent = formatNumber(visibleCount);
     $("#activeQuery").textContent = state.query ? `نتائج البحث عن «${state.query}»` : "";
 
