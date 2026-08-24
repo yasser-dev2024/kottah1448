@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="الخطة التشغيلية التفاعلية لمدرسة الملك عبدالعزيز الابتدائية للعام الدراسي 1448هـ"
+    />
+    <title>الخطة التشغيلية 1448هـ | مدرسة الملك عبدالعزيز الابتدائية</title>
+    <link rel="icon" type="image/png" href="assets/school-logo.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+
+    <header class="site-header" id="siteHeader">
+      <div class="container nav-shell">
+        <a class="brand" href="#home" aria-label="العودة إلى الرئيسية">
+          <span class="brand-logo"><img src="assets/school-logo.png" alt="شعار المدرسة" /></span>
+          <span>
+            <strong>الخطة التشغيلية</strong>
+            <small>مدرسة الملك عبدالعزيز الابتدائية</small>
+          </span>
+        </a>
+
+        <button class="menu-toggle icon-button" id="menuToggle" type="button" aria-label="فتح قائمة التنقل" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="main-nav" id="mainNav" aria-label="التنقل الرئيسي">
+          <a href="#overview">نظرة عامة</a>
+          <a href="#programs">البرامج</a>
+          <a href="#plan-content">بيانات الخطة</a>
+          <a href="#resources">الملفات</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button class="icon-button" id="themeToggle" type="button" aria-label="تبديل نمط العرض">◐</button>
+          <a class="button button-small button-gold" id="navPdfLink" href="#plan-content">تصفح الخطة</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-image" aria-hidden="true"></div>
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="hero-orb hero-orb-one" aria-hidden="true"></div>
+        <div class="hero-orb hero-orb-two" aria-hidden="true"></div>
+        <div class="container hero-grid">
+          <div class="hero-copy reveal">
+            <div class="eyebrow"><span></span> العام الدراسي 1448هـ</div>
+            <h1>خطة تشغيلية<br /><em>تُحوّل الرؤية إلى أثر</em></h1>
+            <p id="heroVision">بيئة تعليمية محفزة تسهم في بناء جيل مبدع ومؤهل لمستقبل واعد.</p>
+            <div class="hero-actions">
+              <a class="button button-gold" href="#plan-content">استكشف جميع البيانات</a>
+              <a class="button button-ghost" id="heroPptxLink" href="#programs">عرض البرامج</a>
+            </div>
+            <div class="hero-meta" aria-label="بيانات إعداد الخطة">
+              <span><b>الإعداد</b> لجنة التميز</span>
+              <span><b>مدير المدرسة</b> زاهر أحمد آل بريد</span>
+              <span><b>الجهة</b> تعليم عسير</span>
+            </div>
+          </div>
+
+          <aside class="hero-dashboard reveal" aria-label="مؤشرات الخطة">
+            <div class="dashboard-top">
+              <span class="live-dot"></span>
+              <span>لوحة الخطة التفاعلية</span>
+              <b>1448</b>
+            </div>
+            <div class="dashboard-score">
+              <div class="score-ring"><span id="heroSlideCount">79</span><small>شريحة</small></div>
+              <div>
+                <strong>جميع البيانات متاحة</strong>
+                <p>استعراض وبحث وطباعة وتنزيل من مكان واحد.</p>
+              </div>
+            </div>
+            <div class="mini-stats" id="heroStats"></div>
+            <a class="dashboard-link" href="#plan-content">فتح مستعرض الخطة <span>←</span></a>
+          </aside>
+        </div>
+        <a class="scroll-cue" href="#overview" aria-label="الانتقال إلى القسم التالي"><span></span></a>
+      </section>
+
+      <section class="section overview-section" id="overview">
+        <div class="container">
+          <div class="section-heading centered reveal">
+            <span class="section-kicker">الخطة في أرقام</span>
+            <h2>كل ما تحتاجه المدرسة، منظّم وقابل للوصول</h2>
+            <p>نُقلت معلومات العرض الأصلي كاملة إلى تجربة رقمية يمكن البحث فيها وتصفحها عبر الهاتف والحاسب.</p>
+          </div>
+          <div class="stats-grid" id="statsGrid"></div>
+
+          <div class="strategy-grid">
+            <article class="strategy-card reveal">
+              <span class="strategy-number">01</span>
+              <div class="strategy-icon">◎</div>
+              <h3>وضوح الاتجاه</h3>
+              <p>الرؤية والرسالة والأولويات مترابطة مع البرامج التنفيذية ومؤشرات الإنجاز.</p>
+            </article>
+            <article class="strategy-card featured reveal">
+              <span class="strategy-number">02</span>
+              <div class="strategy-icon">◫</div>
+              <h3>تنفيذ قابل للمتابعة</h3>
+              <p>الجداول والنماذج والتقارير محفوظة ببنيتها لسهولة التنفيذ والتوثيق.</p>
+            </article>
+            <article class="strategy-card reveal">
+              <span class="strategy-number">03</span>
+              <div class="strategy-icon">↗</div>
+              <h3>تحسين مستمر</h3>
+              <p>نظام متكامل للمتابعة والمراقبة والمساءلة والتقويم والتحسين.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section sections-section" aria-labelledby="journeyTitle">
+        <div class="container">
+          <div class="section-heading split reveal">
+            <div>
+              <span class="section-kicker">رحلة الخطة</span>
+              <h2 id="journeyTitle">سبعة مسارات، من التهيئة إلى التحسين</h2>
+            </div>
+            <p>انتقل مباشرة إلى أي قسم، ثم افتح الشرائح والجداول المرتبطة به.</p>
+          </div>
+          <div class="section-path" id="sectionPath"></div>
+        </div>
+      </section>
+
+      <section class="section programs-section" id="programs">
+        <div class="container">
+          <div class="section-heading split light reveal">
+            <div>
+              <span class="section-kicker">محفظة المبادرات</span>
+              <h2>27 برنامجاً تنفيذياً يصنع الأثر</h2>
+            </div>
+            <p>ثلاثة مسارات مترابطة تجمع التعلم والطالب والاستدامة المؤسسية.</p>
+          </div>
+          <div class="program-toolbar" id="programFilters" role="group" aria-label="تصفية البرامج"></div>
+          <div class="program-grid" id="programGrid"></div>
+          <a class="inline-link light-link" href="#slide-29">عرض نماذج البرامج التنفيذية كاملة <span>←</span></a>
+        </div>
+      </section>
+
+      <section class="section plan-section" id="plan-content">
+        <div class="container wide-container">
+          <div class="section-heading split reveal">
+            <div>
+              <span class="section-kicker">المحتوى الكامل</span>
+              <h2>مستعرض بيانات الخطة</h2>
+            </div>
+            <p>ابحث في النصوص والجداول، أو اختر قسماً للوصول المباشر إلى بياناته.</p>
+          </div>
+
+          <div class="plan-toolbar">
+            <label class="search-box" for="planSearch">
+              <span aria-hidden="true">⌕</span>
+              <input id="planSearch" type="search" placeholder="ابحث عن برنامج، مؤشر، اسم أو عبارة…" autocomplete="off" />
+              <kbd>Ctrl K</kbd>
+            </label>
+            <label class="select-box" for="sectionFilter">
+              <span>القسم</span>
+              <select id="sectionFilter"><option value="all">جميع الأقسام</option></select>
+            </label>
+            <button class="button button-outline" id="expandAll" type="button">فتح النتائج</button>
+            <button class="button button-outline" id="collapseAll" type="button">طي النتائج</button>
+            <button class="button button-dark" id="printPlan" type="button">طباعة الخطة</button>
+          </div>
+
+          <div class="results-summary" aria-live="polite">
+            <span id="resultsCount">79 شريحة</span>
+            <span id="activeQuery"></span>
+          </div>
+
+          <div class="plan-workspace">
+            <aside class="plan-index" aria-label="فهرس أقسام الخطة">
+              <div class="index-head">
+                <span>فهرس المحتويات</span>
+                <b id="indexCount">79</b>
+              </div>
+              <nav id="planIndex"></nav>
+              <div class="index-download">
+                <span>انتقل بسرعة بين المحتويات</span>
+                <a id="indexPdfLink" href="#plan-content">عرض جميع الأقسام</a>
+              </div>
+            </aside>
+            <div class="slides-list" id="slidesList"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section resources-section" id="resources">
+        <div class="container">
+          <div class="section-heading centered reveal">
+            <span class="section-kicker">مركز الروابط</span>
+            <h2>انتقل، استعرض، واطبع مباشرة</h2>
+            <p>كل محتوى الخطة متاح داخل الصفحة دون الحاجة إلى ملفات PowerPoint أو PDF.</p>
+          </div>
+          <div class="download-grid" id="downloadGrid"></div>
+          <div class="gallery-shell">
+            <div class="gallery-head">
+              <div>
+                <span class="section-kicker">الصور والمرفقات</span>
+                <h3>الوثائق البصرية الموجودة في المصدر</h3>
+              </div>
+              <span id="galleryCount"></span>
+            </div>
+            <div class="asset-gallery" id="assetGallery"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <img src="assets/school-logo.png" alt="شعار مدرسة الملك عبدالعزيز الابتدائية" />
+          <div><strong>مدرسة الملك عبدالعزيز الابتدائية</strong><span>الخطة التشغيلية للعام الدراسي 1448هـ</span></div>
+        </div>
+        <blockquote>«بالتخطيط السليم والعمل الجماعي نحقق التميز ونصنع أثراً مستداماً في تعليم أبنائنا.»</blockquote>
+        <div class="footer-links">
+          <a href="#home">الرئيسية</a><a href="#programs">البرامج</a><a href="#plan-content">البيانات</a>
+        </div>
+      </div>
+      <div class="container footer-bottom"><span>تعليم عسير</span><span>1448هـ</span></div>
+    </footer>
+
+    <div class="floating-actions">
+      <button id="floatingPrint" type="button" aria-label="طباعة الصفحة">⎙</button>
+      <a href="#home" aria-label="العودة إلى أعلى الصفحة">↑</a>
+    </div>
+
+    <dialog class="image-dialog" id="imageDialog">
+      <button class="dialog-close" id="dialogClose" type="button" aria-label="إغلاق">×</button>
+      <img id="dialogImage" src="" alt="" />
+      <p id="dialogCaption"></p>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
