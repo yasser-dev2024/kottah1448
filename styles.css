@@ -1,24 +1,28 @@
 :root {
-  --navy-950: #031f33;
-  --navy-900: #052d48;
-  --navy-800: #083b5c;
-  --navy-700: #0b5274;
-  --teal-700: #0b6f78;
-  --teal-600: #15989b;
-  --teal-100: #dff2f1;
-  --gold-600: #c99225;
-  --gold-500: #d7a12e;
-  --gold-200: #f1deb0;
-  --gold-100: #f8edcf;
-  --green-600: #5d9f3d;
-  --ink: #17324d;
-  --muted: #657780;
-  --line: #d7e2e4;
-  --surface: #ffffff;
-  --surface-soft: #f5f8f7;
-  --page: #edf3f2;
-  --shadow-sm: 0 10px 30px rgba(5, 45, 72, 0.08);
-  --shadow-lg: 0 28px 70px rgba(3, 31, 51, 0.2);
+  --navy-950: #102c2c;
+  --navy-900: #173c3a;
+  --navy-800: #21504b;
+  --navy-700: #2b6860;
+  --teal-700: #2d6d67;
+  --teal-600: #3d887b;
+  --teal-100: #e3efe9;
+  --gold-600: #c78a20;
+  --gold-500: #e3a62f;
+  --gold-200: #eed9a3;
+  --gold-100: #f7ebcb;
+  --green-600: #618d45;
+  --aseer-red: #c84e3b;
+  --aseer-blue: #39799a;
+  --aseer-clay: #9a6145;
+  --aseer-stone: #d8c8af;
+  --ink: #243d3b;
+  --muted: #6f786f;
+  --line: #ddd3c4;
+  --surface: #fffdf8;
+  --surface-soft: #f7f2e8;
+  --page: #f2eee5;
+  --shadow-sm: 0 10px 30px rgba(59, 65, 53, 0.09);
+  --shadow-lg: 0 28px 70px rgba(16, 44, 44, 0.23);
   --radius-sm: 14px;
   --radius-md: 22px;
   --radius-lg: 34px;
@@ -29,10 +33,10 @@
 html[data-theme="dark"] {
   --ink: #eff8f7;
   --muted: #a8bec2;
-  --line: #244b5c;
-  --surface: #082d42;
-  --surface-soft: #06263a;
-  --page: #031f33;
+  --line: #48615b;
+  --surface: #1a3a38;
+  --surface-soft: #14312f;
+  --page: #102826;
   --shadow-sm: 0 10px 30px rgba(0, 0, 0, 0.22);
   color-scheme: dark;
 }
@@ -50,7 +54,11 @@ html {
 
 body {
   margin: 0;
-  background: var(--page);
+  background-color: var(--page);
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(200, 78, 59, 0.045) 0 2px, transparent 3px),
+    radial-gradient(circle at 88% 42%, rgba(61, 136, 123, 0.05) 0 2px, transparent 3px);
+  background-size: 38px 38px, 46px 46px;
   color: var(--ink);
   font-family: Tahoma, Arial, sans-serif;
   line-height: 1.75;
@@ -1388,10 +1396,12 @@ html[data-theme="dark"] .slide-title strong {
 }
 
 .download-card {
+  position: relative;
   min-height: 215px;
   padding: 24px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   background: var(--surface-soft);
@@ -1664,6 +1674,178 @@ html[data-theme="dark"] .gallery-head h3 {
 .reveal.visible {
   opacity: 1;
   transform: none;
+}
+
+/* هوية عسير: لمسات هندسية خفيفة مستوحاة من القط العسيري ومواد العمارة المحلية */
+.site-header::after,
+.hero::before,
+.site-footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 7px;
+  background:
+    linear-gradient(135deg, var(--aseer-red) 25%, transparent 25%) 0 0 / 22px 14px,
+    linear-gradient(225deg, var(--aseer-blue) 25%, transparent 25%) 0 0 / 22px 14px,
+    linear-gradient(315deg, var(--gold-500) 25%, transparent 25%) 11px 0 / 22px 14px,
+    linear-gradient(45deg, var(--green-600) 25%, transparent 25%) 11px 0 / 22px 14px,
+    #f7efe0;
+}
+
+.site-header::after {
+  bottom: -7px;
+  opacity: 0.96;
+}
+
+.hero::before {
+  z-index: 3;
+  bottom: 24px;
+  height: 11px;
+  opacity: 0.9;
+}
+
+.hero-overlay {
+  background:
+    linear-gradient(90deg, rgba(16, 44, 44, 0.28), rgba(16, 44, 44, 0.88) 58%, rgba(16, 44, 44, 0.97)),
+    linear-gradient(0deg, rgba(16, 44, 44, 0.95), transparent 58%);
+}
+
+.asiri-motif {
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+  padding-inline-start: 4px;
+}
+
+.asiri-motif span {
+  width: 12px;
+  height: 12px;
+  display: block;
+  border: 2px solid rgba(255, 255, 255, 0.82);
+  background: var(--gold-500);
+  transform: rotate(45deg);
+}
+
+.asiri-motif span:nth-child(2),
+.asiri-motif span:nth-child(6) { background: var(--aseer-red); }
+.asiri-motif span:nth-child(3) { background: var(--aseer-blue); }
+.asiri-motif span:nth-child(4) { background: var(--green-600); }
+.asiri-motif span:nth-child(5) { background: #f5ead7; }
+.asiri-motif span:nth-child(7) { background: var(--aseer-clay); }
+
+.hero h1 em {
+  color: #f0b33a;
+  text-shadow: 0 8px 28px rgba(0, 0, 0, 0.16);
+}
+
+.hero-dashboard {
+  border-color: rgba(238, 217, 163, 0.34);
+  background:
+    linear-gradient(145deg, rgba(255, 253, 248, 0.17), rgba(16, 44, 44, 0.14)),
+    rgba(16, 44, 44, 0.3);
+}
+
+.button-gold,
+.dashboard-link {
+  border-bottom: 3px solid var(--aseer-red);
+  background: linear-gradient(135deg, #efc45e, var(--gold-500));
+}
+
+.section-kicker::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border: 2px solid var(--aseer-red);
+  background: var(--gold-500);
+  transform: rotate(45deg);
+}
+
+.section-heading h2::after {
+  content: "";
+  width: 118px;
+  height: 6px;
+  display: block;
+  margin-top: 15px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--aseer-red) 0 20%, var(--gold-500) 20% 40%, var(--green-600) 40% 60%, var(--aseer-blue) 60% 80%, var(--aseer-clay) 80%);
+}
+
+.section-heading.centered h2::after {
+  margin-inline: auto;
+}
+
+.stat-card::before,
+.strategy-card::before,
+.download-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5px;
+  background: linear-gradient(90deg, var(--aseer-red) 0 20%, var(--gold-500) 20% 40%, var(--green-600) 40% 60%, var(--aseer-blue) 60% 80%, var(--aseer-clay) 80%);
+}
+
+.strategy-card,
+.stat-card,
+.download-card,
+.table-card,
+.plan-toolbar,
+.plan-index {
+  border-color: var(--aseer-stone);
+}
+
+.sections-section {
+  background:
+    linear-gradient(145deg, transparent 0 78%, rgba(154, 97, 69, 0.06) 78%),
+    var(--surface);
+}
+
+.programs-section {
+  background:
+    linear-gradient(145deg, transparent 0 72%, rgba(200, 78, 59, 0.1) 72%),
+    linear-gradient(35deg, transparent 0 75%, rgba(227, 166, 47, 0.09) 75%),
+    radial-gradient(circle at 12% 18%, rgba(61, 136, 123, 0.2), transparent 28%),
+    var(--navy-950);
+}
+
+.program-card {
+  border-color: rgba(238, 217, 163, 0.18);
+}
+
+.slide-card {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--card-accent) 4%, var(--surface)), var(--surface) 38%);
+}
+
+.slide-card:nth-child(5n + 1) { --card-accent: var(--aseer-red); }
+.slide-card:nth-child(5n + 2) { --card-accent: var(--gold-500); }
+.slide-card:nth-child(5n + 3) { --card-accent: var(--aseer-blue); }
+.slide-card:nth-child(5n + 4) { --card-accent: var(--green-600); }
+.slide-card:nth-child(5n + 5) { --card-accent: var(--aseer-clay); }
+
+.table-caption {
+  border-bottom: 4px solid transparent;
+  border-image: linear-gradient(90deg, var(--aseer-red), var(--gold-500), var(--green-600), var(--aseer-blue)) 1;
+  background: #f3ecdf;
+}
+
+html[data-theme="dark"] .table-caption {
+  background: #173432;
+}
+
+.data-table th {
+  background: linear-gradient(145deg, var(--navy-800), var(--navy-950));
+}
+
+.site-footer {
+  position: relative;
+  background:
+    linear-gradient(145deg, transparent 0 76%, rgba(200, 78, 59, 0.1) 76%),
+    var(--navy-950);
+}
+
+.site-footer::before {
+  top: 0;
+  height: 9px;
 }
 
 .plan-preview .hero,
