@@ -36,3 +36,4 @@ function copyItem(source, destination) {
 rmSync(output, { recursive: true, force: true });
 mkdirSync(output, { recursive: true });
 for (const item of publishItems) copyItem(item, join(output, item));
+copyItem("worker.mjs", join(output, "index.js"));
